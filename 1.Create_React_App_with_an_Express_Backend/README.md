@@ -12,7 +12,7 @@
 
 ```shell
 $ npm i express-generator
-$ express react-backend --view=pug
+$ express server --view=pug
 ```
 
 위와 같이하면, react-backend라는 프로젝트가 만들어진다.
@@ -29,7 +29,7 @@ react-backend 폴더로 가서 필요한 모듈들을 설치해 준다. *package
 그렇게 되면 다음과 같이 directory tree를 볼 수 있다. 
 
 ```shell
-
+:server
 │  app.js
 │  package-lock.json
 │  package.json
@@ -130,7 +130,7 @@ module.exports = router;
 
 ## 2 Front_end
 
-	리엑트도 프로젝트를 일단 만들어 준다. react-backend 폴더에 프로젝트를 만든다.
+리엑트도 프로젝트를 일단 만들어 준다. client 폴더에 프로젝트를 만든다.
 
 ```shell
 $ npm i -g create-react-app
