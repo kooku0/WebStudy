@@ -6,25 +6,74 @@
 >
 >  [Create React App with and Express Backend](https://www.youtube.com/watch?v=8bNlffXEcC0)   
 
+최종 만들어지는 디렉터리 트리는 다음과 같다.
+
+```shell
+:code
+│  
+├─client
+│  │  .gitignore
+│  │  package.json
+│  │  README.md
+│  │  yarn.lock
+│  │              
+│  ├─public
+│  │      favicon.ico
+│  │      index.html
+│  │      manifest.json
+│  │      
+│  └─src
+│          App.css
+│          App.js
+│          App.test.js
+│          index.css
+│          index.js
+│          logo.svg
+│          serviceWorker.js
+│          
+└─server
+    │  app.js
+    │  package-lock.json
+    │  package.json
+    │  
+    ├─bin
+    │      www
+    │              
+    ├─public
+    │  ├─images
+    │  ├─javascripts
+    │  └─stylesheets
+    │          style.css
+    │          
+    ├─routes
+    │      index.js
+    │      users.js
+    │      
+    └─views
+            error.jade
+            index.jade
+            layout.jade
+```
+
+
+
 ## 1 Back_end
 
 	먼저 backend를 구성해보자!  나 같은 초보자는 프레임워크에 필요한 package.json을 만들어주고 기본 폴더 구조까지 잡아주는 패키지가 있다. 바로 Express-generator이다.
 
 ```shell
 $ npm i express-generator
-$ express server --view=pug
+$ express server
 ```
 
-위와 같이하면, react-backend라는 프로젝트가 만들어진다.
-
-`--view=pug`를 해준 이유는 /view 에 생성되는 파일이 .jade보단 .pug파일이 익숙하기 때문이다.
+위와 같이하면, server라는 프로젝트가 만들어진다.
 
 ```shell
-$ cd react-backend
+$ cd server
 $ npm install
 ```
 
-react-backend 폴더로 가서 필요한 모듈들을 설치해 준다. *package.json*에 필요한 모듈들이 적혀있기 때문에 쉽게 설치할 수 있다.
+server 폴더로 가서 필요한 모듈들을 설치해 준다. *package.json*에 필요한 모듈들이 적혀있기 때문에 쉽게 설치할 수 있다.
 
 그렇게 되면 다음과 같이 directory tree를 볼 수 있다. 
 
