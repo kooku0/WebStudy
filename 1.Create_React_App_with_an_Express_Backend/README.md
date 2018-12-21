@@ -59,7 +59,7 @@
 
 ## 1 Back_end
 
-	먼저 backend를 구성해보자!  나 같은 초보자는 프레임워크에 필요한 package.json을 만들어주고 기본 폴더 구조까지 잡아주는 패키지가 있다. 바로 Express-generator이다.
+ 먼저 backend를 구성해보자!  나 같은 초보자는 프레임워크에 필요한 package.json을 만들어주고 기본 폴더 구조까지 잡아주는 패키지가 있다. 바로 Express-generator이다.
 
 ```shell
 $ npm i express-generator
