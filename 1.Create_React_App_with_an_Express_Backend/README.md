@@ -190,7 +190,9 @@ $ create-react-app client
 
 다음으로 `package.json`에서 프록시(Proxy)키를 설정해 줘야한다. 이는 express와 react App이 서로 통신할 수 있는 역할을 할 것이다. 
 
-> 프록시에 관한 설명은 다음을 참조하자. [프록시란?](http://brownbears.tistory.com/191)
+> 프록시에 관한 설명은 다음을 참조하자. [프록시란?](https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9D%EC%8B%9C_%EC%84%9C%EB%B2%84)
+>
+> 쉽게 말해서 중계 해주는 것이라고 생각하면 될 것 같다.
 
 ```json
 //client/package.json
