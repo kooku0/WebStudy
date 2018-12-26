@@ -9,11 +9,12 @@ class App extends Component {
   state = {
     input: '',
     todos: [
-      { id: 0, text: ' 리액트 소개', checked: false },
-      { id: 1, text: ' 리액트 소개', checked: true },
-      { id: 2, text: ' 리액트 소개', checked: false }
+      { id: 0, text: ' 리액트 소개0', checked: false },
+      { id: 1, text: ' 리액트 소개1', checked: true },
+      { id: 2, text: ' 리액트 소개2', checked: false }
     ]
   }
+  
   handleChange = (e) => {
     this.setState({
       input: e.target.value // input 의 다음 바뀔 값
@@ -65,6 +66,7 @@ handleRemove = (id) => {
     todos: todos.filter(todo => todo.id !== id)
   });
 }
+
   render() {
     const { input, todos } = this.state;
     const {
