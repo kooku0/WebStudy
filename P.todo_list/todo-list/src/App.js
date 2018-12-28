@@ -40,32 +40,32 @@ class App extends Component {
     }
   }
 
-handleToggle = (id) => {
-  const { todos } = this.state;
+  handleToggle = (id) => {
+    const { todos } = this.state;
 
-  //파라미터로 받은 id를 가지고 몇번째 아이템인지 찾습니다.
-  const index = todos.findIndex(todo => todo.id === id);
-  const selected = todos[index]; // 선택한 객체
+    //파라미터로 받은 id를 가지고 몇번째 아이템인지 찾습니다.
+    const index = todos.findIndex(todo => todo.id === id);
+    const selected = todos[index]; // 선택한 객체
 
-  const nextTodos = [...todos]; // 배열을 복사
+    const nextTodos = [...todos]; // 배열을 복사
 
-  //기존의 값들을 복사하고, checked 값을 덮어쓰기
-  nextTodos[index] = {
-    ...selected,
-    checked: !selected.checked
-  };
+    //기존의 값들을 복사하고, checked 값을 덮어쓰기
+    nextTodos[index] = {
+      ...selected,
+      checked: !selected.checked
+    };
 
-  this.setState({
-    todos: nextTodos
-  });
-}
+    this.setState({
+      todos: nextTodos
+    });
+  }
 
-handleRemove = (id) => {
-  const { todos } = this.state;
-  this.setState({
-    todos: todos.filter(todo => todo.id !== id)
-  });
-}
+  handleRemove = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter(todo => todo.id !== id)
+    });
+  }
 
   render() {
     const { input, todos } = this.state;
