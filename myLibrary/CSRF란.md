@@ -60,12 +60,36 @@ session.setAttribute("CSRF_TOKEN",UUID.randomUUID().toString());
 
 이 외에도 form 태그를 입력할 시 GET방식을 지양하고 POST방식을 쓰도록 하는 것은 기본이라고 할 수 있다.
 
+
+
+## Django에서의 csrf
+
+```json
+{
+	"username": "test01",
+	"password": "1234"
+}
+```
+
+다음과 같이 로그인을 하면(post method)
+
+response 값으로
+
+```json
+{
+    "user": {
+        "id": 2,
+        "username": "test01"
+    },
+    "token": "9a1d113d1a1926955f41b2e46d3786a89986a0a93db7cbd0d5fce30a8624e21c"
+}
+```
+
+토큰값을 전해주게 된다.  post method 사용시 header에 이 token을 넣지 않으면 request가 거절된다. 
+
 ------
 
 ### reference
 
 * [[Spring/CSRF] CSRF란 무엇인가?](https://postitforhooney.tistory.com/entry/SpringCSRF-CSRF%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80)
 * [[보안] CSRF(Cross Site Request Forgery)란 무엇인가?](https://sj602.github.io/2018/07/14/what-is-CSRF/)
-```
-
-```
