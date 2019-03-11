@@ -128,7 +128,7 @@ $ uwsgi --socket :8001 --wsgi-file test.py
 자신의 Django를 실행시키기 위해서는 
 
 ```shell
-$ uwsgi --socket /tmp/프로젝트명.sodk --module 프로젝트경로.wsgi
+$ uwsgi --socket /tmp/프로젝트명.sock --module 프로젝트경로.wsgi
 ```
 
 을 하면 됩니다.
@@ -237,6 +237,36 @@ $ sudo systemctl restart uwsgi
 ```
 
 
+
+## [No module named 'encodings' error while starting uwsgi](https://stackoverflow.com/questions/48356435/no-module-named-encodings-error-while-starting-uwsgi)
+
+> 이부분이 가장 많이 고생한 부분인 것 같다.
+
+virtualenv 의 python 버전과 django의 python 버전 차이로 발생하는 문제이다. 
+
+1) 
+
+```shell
+$ python --version
+```
+
+2)
+
+
+```python
+$ cd env/bin
+$ ls
+```
+
+했을 때의  python 버전이 일치해야 한다. 
+
+`virtualenv`는 기본적으로 python2를 설치함으로 만약 python3을 설치하고자 한다면
+
+```shell
+$ virtualenv -p python3 test
+```
+
+다음과 같은 방법으로 설치하면 된다.
 
 ## 추가 부분
 
