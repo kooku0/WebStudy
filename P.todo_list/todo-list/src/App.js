@@ -6,41 +6,86 @@ import TodoItemList from './components/TodoItemList';
 class App extends Component {
 
   id = 3;
+  priority = 3;
   state = {
-    input: '',
+    title: '',
+    content: '',
+    dueDate: '',
     todos: [
-      { id: 0, text: ' 리액트 소개0', checked: false },
-      { id: 1, text: ' 리액트 소개1', checked: true },
-      { id: 2, text: ' 리액트 소개2', checked: false }
+      { id: 0, title: ' 리액트 소개0', content: '단방향 바인딩', dueDate: '', checked: false },
+      { id: 1, title: ' 리액트 소개1', content: '단방향 바인딩', dueDate: '', checked: true },
+      { id: 2, title: ' 리액트 소개2', content: '단방향 바인딩', dueDate: '', checked: false }
     ]
   }
-  
+  handlePriority = (id, arrow) => {
+    const { todos } = this.state
+    const nextTodos = [...todos]
+    const itemIdx = nextTodos.findIndex(item => item.id === id)
+    
+    if (arrow === 'up') {
+      if (itemIdx === 0) return
+      else {
+        nextTodos[itemIdx].id = itemIdx - 1
+        nextTodos[itemIdx - 1].id = itemIdx
+      }
+    }
+    else {
+      if (itemIdx === todos.length - 1) return
+      else {
+        nextTodos[itemIdx].id = itemIdx + 1
+        nextTodos[itemIdx + 1].id = itemIdx
+      }
+    }
+    nextTodos.sort((a, b) => {
+      if(a.id > b.id) return 1
+      else return -1
+    })
+    
+    this.setState({
+      todos: nextTodos
+    })
+  }
   handleChange = (e) => {
     this.setState({
-      input: e.target.value // input 의 다음 바뀔 값
+      [e.target.name]: e.target.value // input 의 다음 바뀔 값
     });
   }
 
   handleCreate = () => {
-    const { input, todos } = this.state;
+    const { title, content, dueDate, todos } = this.state
+    if (title === '' || content === '') return
+    const date = new Date(Date.parse(dueDate))
+    const pickedDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear()
     this.setState({
-      input: '', // 인풋 비우고 concat을 사용하여 배열에 추가
+      title: '',
+      content: '',
+      dueDate: '',
       todos: todos.concat({
         id: this.id++,
-        text: input,
-        checked: false
+        title: title,
+        dueDate: pickedDate,
+        content: content,
+        checked: false,
+        priority: this.priority++
       })
     });
   }
-
+  handleDate = (date) => {
+    this.setState({
+      dueDate: date
+    })
+  }
   handleKeyPress = (e) => {
     //눌려진 키가 Enter면 handlerCreate 호출
+    const { title, content} = this.state
     if(e.key === 'Enter'){
+      if (title === '' || content === '') return
       this.handleCreate();
     }
   }
 
   handleToggle = (id) => {
+    console.log(this.state.todos)
     const { todos } = this.state;
 
     //파라미터로 받은 id를 가지고 몇번째 아이템인지 찾습니다.
@@ -68,25 +113,35 @@ class App extends Component {
   }
 
   render() {
-    const { input, todos } = this.state;
+    const { title, content, dueDate, todos } = this.state;
     const {
       handleChange,
       handleCreate,
       handleKeyPress,
       handleToggle,
-      handleRemove
+      handleRemove,
+      handlePriority,
+      handleDate
     } = this;
 
     return (
       <div>
         <TodoListTemplate form={
         <Form
-          value = {input}
+          title={title}
+          content={content}
+          dueDate={dueDate}
           onKeyPress={handleKeyPress}
           onChange={handleChange}
           onCreate={handleCreate}
+          onDate={handleDate}
         />}>
-          <TodoItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
+          <TodoItemList
+            todos={todos}
+            onToggle={handleToggle}
+            onRemove={handleRemove}
+            onPriority={handlePriority}
+          />
         </TodoListTemplate>
       </div>
     );

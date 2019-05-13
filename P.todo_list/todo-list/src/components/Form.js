@@ -1,12 +1,34 @@
 import React from 'react';
-import './Form.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const Form = ({value, onChange, onCreate, onKeyPress}) => {
+const Form = ({title, content, dueDate, onChange, onCreate, onKeyPress, onDate}) => {
   return (
     <div className="form">
-      <input value={value} onChange={onChange} onKeyPress={onKeyPress}/>
+      <div className="inputForm">
+        <input
+          name="title"
+          value={title}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          autoComplete="off"
+          placeholder="title..."
+        />
+        <input
+          name="content"
+          value={content}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          autoComplete="off"
+          placeholder="content..."
+        />
+        <DatePicker
+        selected={dueDate}
+        onChange={onDate}
+      />
+      </div>
       <div className="create-button" onClick={onCreate}>
-        추가
+        <div>추가</div>
       </div>
     </div>
   );
